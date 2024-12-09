@@ -55,9 +55,6 @@ def main():
     # os.makedirs(output_image_dir, exist_ok=True)
     # Align(super_resolution_dir, output_json, output_image_dir)
 
-    # # Stick(json_path, cropped_faces_folder, original_image_path, output_image_path)
-    
-
     test.test()
 
     # Super Resolution

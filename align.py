@@ -25,7 +25,7 @@ def calculate_ear(eye):
 def Align(image_dir, output_json, output_image_dir):
     # 初始化人臉檢測器和特徵點預測器
     detector = dlib.get_frontal_face_detector()
-    predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
+    predictor = dlib.shape_predictor("./config/shape_predictor_68_face_landmarks.dat")
 
     # 確保輸出目錄存在
     os.makedirs(output_image_dir, exist_ok=True)

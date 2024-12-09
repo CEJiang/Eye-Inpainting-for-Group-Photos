@@ -4,8 +4,8 @@ import numpy as np
 import json
     
 def crop_faces(input_image_path, output_folder, output_json_dir, target_size, mode):
-    face_model_path = "res10_300x300_ssd_iter_140000_fp16.caffemodel"
-    face_config_path = "deploy.prototxt"
+    face_model_path = "./config/res10_300x300_ssd_iter_140000_fp16.caffemodel"
+    face_config_path = "./config/deploy.prototxt"
 
     face_net = cv2.dnn.readNetFromCaffe(face_config_path, face_model_path)
 
