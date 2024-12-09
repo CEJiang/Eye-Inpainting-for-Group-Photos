@@ -1,0 +1,90 @@
+{
+    "2": [
+        {
+            "filename": "cropped-face-2-iden.png",
+            "eye_left": {
+                "x": 35,
+                "y": 112
+            },
+            "box_left": {
+                "w": 35,
+                "h": 4
+            },
+            "eye_right": {
+                "x": 127,
+                "y": 108
+            },
+            "box_right": {
+                "w": 42,
+                "h": 3
+            },
+            "opened": 0.0,
+            "closed": 1.0
+        },
+        {
+            "filename": "cropped-face-2-ref.png",
+            "eye_left": {
+                "x": 56,
+                "y": 120
+            },
+            "box_left": {
+                "w": 37,
+                "h": 9
+            },
+            "eye_right": {
+                "x": 151,
+                "y": 95
+            },
+            "box_right": {
+                "w": 36,
+                "h": 13
+            },
+            "opened": 1.0,
+            "closed": 0.0
+        }
+    ],
+    "1": [
+        {
+            "filename": "cropped-face-1-ref.png",
+            "eye_left": {
+                "x": 36,
+                "y": 107
+            },
+            "box_left": {
+                "w": 30,
+                "h": 11
+            },
+            "eye_right": {
+                "x": 115,
+                "y": 87
+            },
+            "box_right": {
+                "w": 37,
+                "h": 13
+            },
+            "opened": 0.3095848353639724,
+            "closed": 0.6904151646360276
+        },
+        {
+            "filename": "cropped-face-1-iden.png",
+            "eye_left": {
+                "x": 36,
+                "y": 107
+            },
+            "box_left": {
+                "w": 30,
+                "h": 11
+            },
+            "eye_right": {
+                "x": 116,
+                "y": 87
+            },
+            "box_right": {
+                "w": 36,
+                "h": 13
+            },
+            "opened": 1.0,
+            "closed": 0.0
+        }
+    ]
+}
