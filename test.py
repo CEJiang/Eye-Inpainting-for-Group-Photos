@@ -15,7 +15,7 @@ class Config:
     batch_size = 1  # 每批數據大小
     max_iters = 10000  # 最大迭代次數
     learn_rate = 0.0001  # 學習率
-    test_step = 100  # 測試時加載的模型步數
+    test_step = 195  # 測試時加載的模型步數
     is_load = False  # 是否加載預訓練模型
     use_sp = True  # 是否使用光譜正則化
     lam_recon = 1  # 重建損失的權重
