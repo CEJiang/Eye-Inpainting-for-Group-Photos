@@ -1,0 +1,13 @@
+python 3.9.21
+pytorch 2.4.1
+opencv 4.10.0
+numpy 1.26.4
+torchaudio 2.4.1
+torchvision 0.19.1
+tensorboard-data-server 0.7.2
+scipy 1.13.1
+dlib 19.24.2
+cog 0.13.6
+face-recognition 1.3.0
+basicsr 1.4.2
+realesrgan 0.3.0
