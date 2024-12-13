@@ -55,10 +55,7 @@ def fully_connect(input_, output_size, spectral_norm=True):
 
 
 def conv_cond_concat(x, y):
-    """
-    Concatenate conditioning vector on feature map axis.
-    """
-    y = y.unsqueeze(-1).unsqueeze(-1)  # Expand to match x spatial dimensions
+    y = y.unsqueeze(-1).unsqueeze(-1)
     return torch.cat([x, y.expand_as(x)], dim=1)
 
 
@@ -96,11 +93,8 @@ def _l2normalize(v, eps=1e-12):
 
 
 def spectral_norm(w, power_iterations=1):
-    """
-    Spectral normalization of weights.
-    """
     w_shape = w.shape
-    w = w.view(w.size(0), -1)  # Reshape to [out_channels, in_channels * kernel_size * kernel_size]
+    w = w.view(w.size(0), -1) 
     u = torch.randn(1, w.size(0)).to(w.device)
     for _ in range(power_iterations):
         v = _l2normalize(torch.matmul(u, w))
