@@ -5,9 +5,6 @@ def calculate_psnr(img1_path, img2_path):
     img1 = cv2.imread(img1_path)
     img2 = cv2.imread(img2_path)
 
-    print(img1.shape)
-    print(img2.shape)
-
     if img1.shape != img2.shape:
         raise ValueError("Images must have the same dimensions for PSNR calculation.")
 
