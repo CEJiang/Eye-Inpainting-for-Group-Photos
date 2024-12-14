@@ -5,7 +5,7 @@ import json
 import numpy as np
 from scipy.spatial import distance
 
-def calculate_confidence(ear, open_threshold=0.25, close_threshold=0.15):
+def calculate_confidence(ear, open_threshold=0.15, close_threshold=0.10):
     if ear >= open_threshold:
         return 1.0, 0.0
     elif ear <= close_threshold:

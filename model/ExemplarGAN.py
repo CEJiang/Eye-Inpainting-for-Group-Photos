@@ -156,7 +156,7 @@ class ExemplarGAN(nn.Module):
 
             if (epoch + 1) % 5 == 0:
                 checkpoint_path = os.path.join(self.model_path, f"model_epoch_{epoch + 1}.pth")
-                self.save_model(checkpoint_path)
+                self.save_model(checkpoint_path, optimizer_G, optimizer_D, epoch)
                 print(f"Model saved at {checkpoint_path}")
             
         writer.close()
@@ -186,11 +186,23 @@ class ExemplarGAN(nn.Module):
                 if i >= 5:
                     break
 
-    def save_model(self, path):
-        torch.save(self.state_dict(), path)
+        
 
-    def load_model(self, path):
-        self.load_state_dict(torch.load(path))
+    def save_model(self, path, optimizer_G, optimizer_D, epoch):
+        torch.save({
+            'model_state_dict': self.state_dict(),
+            'optimizer_G_state_dict': optimizer_G.state_dict(),
+            'optimizer_D_state_dict': optimizer_D.state_dict(),
+            'epoch': epoch,
+        }, path)
+
+    def load_model(self, path, optimizer_G=None, optimizer_D=None):
+        checkpoint = torch.load(path)
+        self.load_state_dict(checkpoint['model_state_dict'])
+        if optimizer_G and optimizer_D:
+            optimizer_G.load_state_dict(checkpoint['optimizer_G_state_dict'])
+            optimizer_D.load_state_dict(checkpoint['optimizer_D_state_dict'])
+        return checkpoint.get('epoch', 0)
 
     def get_Mask(self, eye_pos):
         masks = []

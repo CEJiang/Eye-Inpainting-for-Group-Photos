@@ -1,3 +1,4 @@
+import argparse
 import os
 import torch
 import numpy as np
@@ -8,21 +9,28 @@ from model.ExemplarGAN import ExemplarGAN
 from torch.utils.data import DataLoader, Dataset
 
 class Config:
-    OPER_FLAG = 1
-    OPER_NAME = "Experiment_6_21_7"
-    path = "data/align"
-    batch_size = 1 
-    max_iters = 10000
-    learn_rate = 0.0001 
-    test_step = 220
-    is_load = False
-    use_sp = True
-    lam_recon = 1
-    lam_gp = 10
-    beta1 = 0.5
-    beta2 = 0.999
-    n_critic = 1
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    def __init__(self, args):
+        # Mode flag: 0 for training, 1 for testing
+        self.OPER_FLAG = int(args.mode)
+        self.OPER_NAME = args.model_path
+
+        self.batch_size = 1
+        self.max_iters = 10000
+        self.learn_rate = 0.0001
+        self.use_sp = True
+        self.lam_recon = 1
+        self.lam_gp = 10
+        self.beta1 = 0.5
+        self.beta2 = 0.999
+        self.n_critic = 1
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+        if self.OPER_FLAG == 0:
+            self.path = args.train_folder
+            self.is_load = False
+        elif self.OPER_FLAG == 1:
+            self.path = "data/align"
+            self.is_load = True
 
 class EyesDataset(Dataset):
     def __init__(self, images_name, eye_pos_name, ref_images_name, ref_pos_name, data_path, transform=None, output_size=256, device=None):
@@ -119,8 +127,8 @@ def parse_test_data(test_json_path):
     return test_images_name, test_eye_pos_name, test_ref_images_name, test_ref_pos_name
 
 
-def test():
-    FLAGS = Config()
+def test(args):
+    FLAGS = Config(args)
 
     print("OPER_FLAG:", FLAGS.OPER_FLAG)
 
@@ -207,7 +215,7 @@ def test():
             device=FLAGS.device,
         ).to(FLAGS.device)
 
-        model_path = os.path.join(checkpoint_dir, f"model_{FLAGS.test_step}.pth")
+        model_path = args.model_path
         if os.path.exists(model_path):
             if(torch.cuda.is_available()):
                 eGan.load_model(model_path)
